@@ -1,0 +1,22 @@
+[
+        {
+            "name" : "partha",
+            "occupation" : "engineer",
+            "company" : "oracle"
+        },
+        {
+            "name" : "krishna",
+            "occupation" : "programmer",
+            "company" : "Goldman Sachs"
+        },
+        {
+            "name" : "Aman",
+            "occupation" : "developer",
+            "company" : "Flipkart"
+        },
+        {
+            "name" : "Anurag",
+            "occupation" : "software engineer",
+            "company" : "barclays"
+        }
+]

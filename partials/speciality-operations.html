@@ -1,0 +1,88 @@
+<div class="container">
+    <fieldset>
+        <legend>Add a Speciality</legend>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="nameInput">Speciality Name :</label>
+                <!--class "form-control" makes the width 100%-->
+                <div class="col-md-10">
+                    <input class="form-control" placeholder="name" type="text" id="nameInput"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emailInput" class="col-md-2 control-label">Image :</label>
+                <div class="col-md-10">
+                    <row>
+                        <div class="col-md-8">
+                            <div class="cropArea">
+                              <img-crop image="specialityImage" result-image="specialityCroppedImage" result-image-format="image/jpeg" result-image-size="120"></img-crop>
+                            </div>
+                            <div><input type="file" id="specialityFileInput" /></div>
+                        </div>
+                        <div  class="col-md-4">
+                            <div>Cropped Image:</div>
+                            <div><img ng-src="{{specialityCroppedImage}}" /></div>
+                        </div>
+                    </row>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <button class="btn btn-primary" type="submit">
+                         <span class="glyphicon glyphicon-cloud-upload"></span> Add Speciality
+                    </button>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>Add a Sub Speciality</legend>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="selectSite" class="col-md-2 control-label">Select Speciality</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="selectSite">
+                        <option>Lynda.com</option>
+                        <option>Opera.com</option>
+                        <option>Google.com</option>
+                        <option>Facebook.com</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="nameInput">Sub Speciality Name :</label>
+                <!--class "form-control" makes the width 100%-->
+                <div class="col-md-10">
+                    <input class="form-control" placeholder="name" type="text" id="nameInput"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emailInput" class="col-md-2 control-label">Image :</label>
+                <div class="col-md-10">
+                    <row>
+                        <div class="col-md-8">
+                            <div class="cropArea">
+                              <img-crop image="subSpecialityImage" result-image="subSpecialityCroppedImage" result-image-format="image/jpeg" result-image-size="120"></img-crop>
+                            </div>
+                            <div><input type="file" id="subSpecialityFileInput" /></div>
+                        </div>
+                        <div  class="col-md-4">
+                            <div>Cropped Image:</div>
+                            <div><img ng-src="{{subSpecialityCroppedImage}}" /></div>
+                        </div>
+                    </row>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <button class="btn btn-primary" type="submit">
+                         <span class="glyphicon glyphicon-cloud-upload"></span> Add Sub Speciality
+                    </button>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>

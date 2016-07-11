@@ -1,0 +1,138 @@
+<div class="container">
+    <fieldset>
+        <legend>Course Image</legend>
+        <div class="row">
+            <div class="col-md-1"></div>
+
+            <div class="col-md-11">
+                <row>
+                    <div class="col-md-8">
+                        <div class="cropArea">
+                          <img-crop image="myImage" result-image="myCroppedImage" result-image-format="image/jpeg" result-image-size="120"></img-crop>
+                        </div>
+                        <div><input type="file" id="fileInput" /></div>
+                    </div>
+                    <div  class="col-md-4">
+                        <div>Cropped Image:</div>
+                        <div><img ng-src="{{myCroppedImage}}" /></div>
+                        <button class="btn bth-default" type="submit" ng-click="checkResume()">
+                             <span class="glyphicon glyphicon-plus"></span> Attach to Course Image
+                        </button>
+                    </div>
+                </row>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <fieldset>
+        <legend> Create/Select a Subject</legend>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+                <form>
+                    <div class="form-group">
+                        <select class="form-control" ng-init="subject_id=subjectList[0].subjectId" required ng-model="subject_id"
+                                ng-change="getChapters()">
+                            <option ng-repeat="subject in subjectList" value="{{subject.subjectId}}">{{subject.subjectName}}</option>
+                        </select>
+                    </div>
+                    <!--<div class="container" style="position: relative;">
+                        <div class="text-center" style="margin: 0 auto; z-index:1;position: absolute;left:40%; top:25%;background-color: white; width:80px ">OR</div>
+                        <hr>
+                    </div>-->
+                    <!--Search Input Groups-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input ng-model="newSubjectName" class="form-control" placeholder="New Subject Name" type="text" id="subjectInput"/>
+                            <span class="input-group-btn">
+                                <button class="btn bth-default" type="submit" ng-click="addSubject()">
+                                     <span class="glyphicon glyphicon-plus"></span> Add Subject
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <fieldset>
+        <legend> Create/Select a Chapter</legend>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+                <form>
+                    <div class="form-group">
+                        <select class="form-control" ng-init="chapter_id=chapterList[0].chapterId" required ng-model="chapter_id" ng-change="getQuestionAnswers()">
+                            <option ng-repeat="chapter in chapterList" value="{{chapter.chapterId}}">{{chapter.chapterName}}</option>
+                        </select>
+                    </div>
+                    <!--<div class="container" style="position: relative;">
+                        <div class="text-center" style="margin: 0 auto; z-index:1;position: absolute;left:40%; top:25%;background-color: white; width:80px ">OR</div>
+                        <hr>
+                    </div>-->
+                    <!--Search Input Groups-->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input ng-model="newChapterName" class="form-control" placeholder="New Chapter Name" type="text" id="chapterInput"/>
+                            <span class="input-group-btn">
+                                <button class="btn bth-default" type="submit" ng-click="addChapters()">
+                                     <span class="glyphicon glyphicon-plus"></span> Add Chapter
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <fieldset>
+        <legend> Add Question and Answer</legend>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+                <form>
+                    <!--Add Question-->
+                    <div class="form-group">
+                        <label for="questionTextarea">Question</label>
+                        <textarea class="form-control" ng-model="newQuestion" id="questionTextarea"></textarea>
+                    </div>
+
+                    <!--Add Answer-->
+                    <div class="form-group">
+                        <label for="answerTextarea">Answer</label>
+                        <textarea class="form-control" ng-model="newAnswer" id="answerTextarea"></textarea>
+                    </div>
+
+                    <button class="btn bth-default pull-right" type="submit" ng-click="addQuestionAnswer()">
+                         <span class="glyphicon glyphicon-plus"></span> Add Question Answer
+                    </button>
+
+
+                    <!--All Question Answers of that Chapter-->
+                    <table class = "table table-striped">
+                       <caption>Question Answers of the Chapters</caption>
+                       <thead>
+                          <tr>
+                             <th>Question</th>
+                             <th>Answer</th>
+                             <th>Order</th>
+                          </tr>
+                       </thead>
+                       <tbody>
+                          <tr ng-repeat="questionAnswer in questionAnswerList | filter: newQuestion">
+                             <td>{{questionAnswer.question}}</td>
+                             <td>{{questionAnswer.answer}}</td>
+                             <td>{{questionAnswer.indexing}}</td>
+                          </tr>
+                       </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+</div>
