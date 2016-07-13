@@ -1,37 +1,73 @@
 <div class="container">
+    <div ng-if="operationStatus == 'SUCCESS'" class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> {{message}}
+    </div>
+
+    <div ng-if="operationStatus == 'FAILURE'" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Oh Snap!</strong> {{message}}
+    </div>
+
     <fieldset>
         <legend>Add a City</legend>
         <form class="form-horizontal">
             <div class="form-group">
-                <label class="col-md-2 control-label" for="nameInput">City Name :</label>
+                <label class="col-md-2 control-label" for="city.name">City Name :</label>
                 <!--class "form-control" makes the width 100%-->
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="name" type="text" id="nameInput"/>
+                    <input class="form-control" placeholder="name" type="text" id="city.name" ng-model="city.name"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Latitude :</label>
+                <label for="city.email" class="col-md-2 control-label">Latitude :</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="email" type="text" id="emailInput"/>
+                    <input class="form-control" placeholder="latitude" type="text" id="city.email" ng-model="city.latitude"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Longitude :</label>
+                <label for="city.longitude" class="col-md-2 control-label">Longitude :</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="email" type="text" id="emailInput"/>
+                    <input class="form-control" placeholder="longitude" type="text" id="city.longitude" ng-model="city.longitude" />
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-primary" type="submit" ng-click="addCity()">
                          <span class="glyphicon glyphicon-cloud-upload"></span> Add City
                     </button>
                 </div>
             </div>
-
         </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>City List</legend>
+        <div class="form-group">
+            <label for="table" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <table class = "table table-striped">
+                   <thead>
+                      <tr>
+                         <th>City Name</th>
+                         <th>Latitude</th>
+                         <th>Longitude</th>
+                         <th>Status</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr ng-repeat="city in cityList | filter: city.name">
+                         <td>{{city.name}}</td>
+                         <td>{{city.latitude}}</td>
+                         <td>{{city.longitude}}</td>
+                         <td>{{city.status}}</td>
+                      </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
     </fieldset>
 </div>
