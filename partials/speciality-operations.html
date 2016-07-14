@@ -1,4 +1,14 @@
 <div class="container">
+    <div ng-if="operationStatus == 'SUCCESS'" class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> {{message}}
+    </div>
+
+    <div ng-if="operationStatus == 'FAILURE'" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Oh Snap!</strong> {{message}}
+    </div>
+
     <fieldset>
         <legend>Add a Speciality</legend>
         <form class="form-horizontal">
@@ -6,7 +16,7 @@
                 <label class="col-md-2 control-label" for="nameInput">Speciality Name :</label>
                 <!--class "form-control" makes the width 100%-->
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="name" type="text" id="nameInput"/>
+                    <input class="form-control" placeholder="speciality name" type="text" id="speciality.name" ng-model="speciality.name"/>
                 </div>
             </div>
             <div class="form-group">
@@ -29,7 +39,7 @@
 
             <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-primary" type="submit" ng-click="addSpeciality()">
                          <span class="glyphicon glyphicon-cloud-upload"></span> Add Speciality
                     </button>
                 </div>
@@ -38,16 +48,37 @@
     </fieldset>
 
     <fieldset>
+        <legend>Speciality List</legend>
+        <div class="form-group">
+            <label for="table" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <table class = "table table-striped">
+                   <thead>
+                      <tr>
+                         <th>Speciality Name</th>
+                         <th>Status</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr ng-repeat="speciality in specialityList | filter: speciality.name">
+                         <td>{{speciality.speciality}}</td>
+                         <td>{{speciality.status}}</td>
+                      </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <fieldset>
         <legend>Add a Sub Speciality</legend>
         <form class="form-horizontal">
             <div class="form-group">
                 <label for="selectSite" class="col-md-2 control-label">Select Speciality</label>
                 <div class="col-md-10">
-                    <select class="form-control" id="selectSite">
-                        <option>Lynda.com</option>
-                        <option>Opera.com</option>
-                        <option>Google.com</option>
-                        <option>Facebook.com</option>
+                    <select class="form-control" ng-init="subspeciality.speciality_Id=specialityList[0].specialityId" required ng-model="subspeciality.speciality_Id">
+                        <option ng-repeat="speciality in specialityList" value="{{speciality.specialityId}}">{{speciality.speciality}}</option>
                     </select>
                 </div>
             </div>
@@ -55,7 +86,7 @@
                 <label class="col-md-2 control-label" for="nameInput">Sub Speciality Name :</label>
                 <!--class "form-control" makes the width 100%-->
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="name" type="text" id="nameInput"/>
+                    <input class="form-control" placeholder="Subspeciality" type="text" id="subspeciality.name" ng-model="subspeciality.name"/>
                 </div>
             </div>
             <div class="form-group">
@@ -78,11 +109,36 @@
 
             <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-primary" type="submit" ng-click="addSubSpeciality()">
                          <span class="glyphicon glyphicon-cloud-upload"></span> Add Sub Speciality
                     </button>
                 </div>
             </div>
         </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>SubSpeciality List</legend>
+        <div class="form-group">
+            <label for="table" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <table class = "table table-striped">
+                   <thead>
+                      <tr>
+                         <th>Speciality</th>
+                         <th>SubSpeciality Name</th>
+                         <th>Status</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr ng-repeat="subspeciality in subSpecialityList | filter: subspeciality.name">
+                         <td>{{findSpecialityById(subspeciality.specialityId)}}</td>
+                         <td>{{subspeciality.subSpeciality}}</td>
+                         <td>{{subspeciality.status}}</td>
+                      </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
     </fieldset>
 </div>
