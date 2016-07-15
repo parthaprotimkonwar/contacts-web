@@ -13,11 +13,30 @@
 </div>
 
 <div class="container">
+    <div ng-if="operationStatus == 'SUCCESS'" class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> {{message}}
+    </div>
+
+    <div ng-if="operationStatus == 'FAILURE'" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Oh Snap!</strong> {{message}}
+    </div>
+
     <fieldset>
         <legend> Add Vendor</legend>
         <form class="form-horizontal">
 
             <div class="form-group">
+                <label for="selectSite" class="col-md-2 control-label">Choose City :</label>
+                <div class="col-md-10">
+                    <select class="form-control" ng-init="user.city_id=cityList[0].cityId" required ng-model="user.city_Id">
+                        <option ng-repeat="city in cityList" value="{{city.cityId}}">{{city.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!--<div class="form-group">
                 <label for="selectSite" class="col-md-2 control-label">User Type :</label>
                 <div class="col-md-10">
                     <select class="form-control" id="selectSite">
@@ -26,27 +45,27 @@
                         <option>ADMIN</option>
                     </select>
                 </div>
-            </div>
+            </div>-->
 
             <div class="form-group">
-                <label class="col-md-2 control-label" for="nameInput">Name</label>
+                <label class="col-md-2 control-label" for="user.name">Name :</label>
                 <!--class "form-control" makes the width 100%-->
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="name" type="text" id="nameInput"/>
+                    <input class="form-control" placeholder="name" type="text" id="user.name" ng-model="user.name"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Email</label>
+                <label for="user.email" class="col-md-2 control-label">Email :</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="email" type="text" id="emailInput"/>
+                    <input class="form-control" placeholder="email" type="text" id="user.email" ng-model="user.email"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Mobile</label>
+                <label for="user.mobile" class="col-md-2 control-label">Mobile :</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="mobile" type="text" id="user.mobile" ng-model="user.mobile"/>
                 </div>
             </div>
 
@@ -70,12 +89,41 @@
 
             <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-primary" type="submit" ng-click="addAddress()">
+                    <button class="btn btn-primary" type="submit" ng-click="addUser()">
                          <span class="glyphicon glyphicon-cloud-upload"></span> Add User
                     </button>
                 </div>
             </div>
 
         </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>User List</legend>
+        <div class="form-group">
+            <label for="table" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <table class = "table table-striped">
+                   <thead>
+                      <tr>
+                         <th>UserId</th>
+                         <th>Name</th>
+                         <th>Email</th>
+                         <th>Mobile</th>
+                         <th>Status</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr ng-repeat="user in userList | filter: user.name">
+                         <td>{{user.userId}}</td>
+                         <td>{{user.name}}</td>
+                         <td>{{user.email}}</td>
+                         <td>{{user.mobile}}</td>
+                         <td>{{user.status}}</td>
+                      </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
     </fieldset>
 </div>
