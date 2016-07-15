@@ -12,84 +12,94 @@
 </div>
 
 <div class="container">
+    <div ng-if="operationStatus == 'SUCCESS'" class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> {{message}}
+    </div>
+
+    <div ng-if="operationStatus == 'FAILURE'" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Oh Snap!</strong> {{message}}
+    </div>
+
     <fieldset>
         <legend> Add Address</legend>
         <form class="form-horizontal">
 
             <div class="form-group">
-                <label class="col-md-2 control-label" for="nameInput">UserId</label>
+                <label class="col-md-2 control-label" for="address.userId">UserId</label>
                 <!--class "form-control" makes the width 100%-->
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="name" type="text" id="nameInput"/>
+                    <input class="form-control" placeholder="User ID" type="text" id="address.userId" ng-model="address.userId"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="commentsTextarea" class="col-md-2 control-label">Address</label>
+                <label for="address.address" class="col-md-2 control-label">Address</label>
                 <div class="col-md-10">
-                    <textarea class="form-control" placeholder="comments" id="commentsTextarea"></textarea>
+                    <textarea class="form-control" placeholder="Address" id="address.address" ng-model="address.address"></textarea>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Landmark</label>
+                <label for="address.landmark" class="col-md-2 control-label">Landmark</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="landmark" type="text" id="address.landmark" ng-model="address.landmark"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Pincode</label>
+                <label for="address.pincode" class="col-md-2 control-label">Pincode</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="Pincode" type="text" id="address.pincode" ng-model="address.pincode"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Phone No:</label>
+                <label for="address.phoneNo" class="col-md-2 control-label">Phone No:</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="Mobile No" type="text" id="address.phoneNo" ng-model="address.phoneNo"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">City</label>
+                <label for="address.city" class="col-md-2 control-label">City</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="city" type="text" id="address.city" ng-model="address.city"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">State</label>
+                <label for="address.state" class="col-md-2 control-label">State</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="State" type="text" id="address.state" ng-model="address.state"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Country</label>
+                <label for="address.country" class="col-md-2 control-label">Country</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="country" type="text" id="address.country" ng-model="address.country"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Latitude</label>
+                <label for="address.latitude" class="col-md-2 control-label">Latitude</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="latitude" type="text" id="address.latitude" ng-model="address.latitude" />
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="emailInput" class="col-md-2 control-label">Longitude</label>
+                <label for="address.longitude" class="col-md-2 control-label">Longitude</label>
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="mobile" type="text" id="mobileInput"/>
+                    <input class="form-control" placeholder="longitude" type="text" id="address.longitude" ng-model="address.longitude"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-primary" type="submit">
+                    <button class="btn btn-primary" type="submit" ng-click="addAddress()">
                          <span class="glyphicon glyphicon-cloud-upload"></span> Add Address
                     </button>
                 </div>
@@ -98,4 +108,32 @@
         </form>
     </fieldset>
 
+    <fieldset>
+        <legend>Address List</legend>
+        <div class="form-group">
+            <label for="table" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <table class = "table table-striped">
+                   <thead>
+                      <tr>
+                         <th>UserId</th>
+                         <th>Pincode</th>
+                         <th>Address</th>
+                         <th>city</th>
+                         <th>Status</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr ng-repeat="address in addressList | filter: address.pincode">
+                         <td>{{address.userId}}</td>
+                         <td>{{address.pincode}}</td>
+                         <td>{{address.address}}</td>
+                         <td>{{address.city}}</td>
+                         <td>{{address.state}}</td>
+                      </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
+    </fieldset>
 </div>
