@@ -2,7 +2,7 @@ myApp.controller('vendorAddressController', ['$scope', '$http', 'commonServices'
 
     //Add User
     $scope.addAddress = function() {
-        var data = {"pincode" : $scope.address.pincode, "address" : $scope.address.address, "landmark" : $scope.address.landmark, "phoneNo" : $scope.address.phoneNo, "city" : $scope.address.city, "state" : $scope.address.state, "country" : $scope.address.country , "latitude" : $scope.address.latitude, "longitude" : $scope.address.longitude};
+        var data = { "addressHeading":"DEFAULT", "userId" : $scope.address.userId, "pincode" : $scope.address.pincode, "address" : $scope.address.address, "landmark" : $scope.address.landmark, "phoneNo" : $scope.address.phoneNo, "city" : $scope.address.city, "state" : $scope.address.state, "country" : $scope.address.country , "latitude" : $scope.address.latitude, "longitude" : $scope.address.longitude};
 
         $scope.addAddressPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/onboard/address",CONSTANTS.POST_METHOD,data);
         $scope.addAddressPromise.success(function (data, status, headers, config) {

@@ -21,6 +21,9 @@ myApp.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpP
     }).when('/contacts/speciality/edit', {
         templateUrl : 'partials/speciality-operations.html',
         controller : 'specialityController'
+    }).when('/contacts/subspeciality/edit', {
+        templateUrl : 'partials/sub-speciality-operations.html',
+        controller : 'subSpecialityController'
     }).when('/contacts/vendor/edit', {
         templateUrl : 'partials/vendor-operations.html',
         controller : 'vendorController'

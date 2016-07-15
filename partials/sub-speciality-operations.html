@@ -10,13 +10,21 @@
     </div>
 
     <fieldset>
-        <legend>Add a Speciality</legend>
+        <legend>Add a Sub Speciality</legend>
         <form class="form-horizontal">
             <div class="form-group">
-                <label class="col-md-2 control-label" for="nameInput">Speciality Name :</label>
+                <label for="selectSite" class="col-md-2 control-label">Select Speciality</label>
+                <div class="col-md-10">
+                    <select class="form-control" ng-init="subspeciality.speciality_Id=specialityList[0].specialityId" required ng-model="subspeciality.speciality_Id">
+                        <option ng-repeat="speciality in specialityList" value="{{speciality.specialityId}}">{{speciality.speciality}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="nameInput">Sub Speciality Name :</label>
                 <!--class "form-control" makes the width 100%-->
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="speciality name" type="text" id="speciality.name" ng-model="speciality.name"/>
+                    <input class="form-control" placeholder="Subspeciality" type="text" id="subspeciality.name" ng-model="subspeciality.name"/>
                 </div>
             </div>
             <div class="form-group">
@@ -25,13 +33,13 @@
                     <row>
                         <div class="col-md-8">
                             <div class="cropArea">
-                              <img-crop image="specialityImage" result-image="specialityCroppedImage" result-image-format="image/jpeg" result-image-size="120"></img-crop>
+                              <img-crop image="subSpecialityImage" result-image="subSpecialityCroppedImage" result-image-format="image/jpeg" result-image-size="120"></img-crop>
                             </div>
-                            <div><input type="file" id="specialityFileInput" /></div>
+                            <div><input type="file" id="subSpecialityFileInput" /></div>
                         </div>
                         <div  class="col-md-4">
                             <div>Cropped Image:</div>
-                            <div><img ng-src="{{specialityCroppedImage}}" /></div>
+                            <div><img ng-src="{{subSpecialityCroppedImage}}" /></div>
                         </div>
                     </row>
                 </div>
@@ -39,8 +47,8 @@
 
             <div class="form-group">
                 <div class="col-md-10 col-md-offset-2">
-                    <button class="btn btn-primary" type="submit" ng-click="addSpeciality()">
-                         <span class="glyphicon glyphicon-cloud-upload"></span> Add Speciality
+                    <button class="btn btn-primary" type="submit" ng-click="addSubSpeciality()">
+                         <span class="glyphicon glyphicon-cloud-upload"></span> Add Sub Speciality
                     </button>
                 </div>
             </div>
@@ -48,21 +56,23 @@
     </fieldset>
 
     <fieldset>
-        <legend>Speciality List</legend>
+        <legend>SubSpeciality List</legend>
         <div class="form-group">
             <label for="table" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <table class = "table table-striped">
                    <thead>
                       <tr>
-                         <th>Speciality Name</th>
+                         <th>Speciality</th>
+                         <th>SubSpeciality Name</th>
                          <th>Status</th>
                       </tr>
                    </thead>
                    <tbody>
-                      <tr ng-repeat="speciality in specialityList | filter: speciality.name">
-                         <td>{{speciality.speciality}}</td>
-                         <td>{{speciality.status}}</td>
+                      <tr ng-repeat="subspeciality in subSpecialityList | filter: subspeciality.name">
+                         <td>{{findSpecialityById(subspeciality.specialityId)}}</td>
+                         <td>{{subspeciality.subSpeciality}}</td>
+                         <td>{{subspeciality.status}}</td>
                       </tr>
                    </tbody>
                 </table>

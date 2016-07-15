@@ -21,10 +21,10 @@
         <nav class="navbar navbar-inverse">
           <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand branding" href="#">ContactMe &nbsp;&nbsp;</a>
+              <a class="navbar-brand branding" href="#">Contact &nbsp;&nbsp;</a>
             </div>
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
+              <!--<li ng-class="active"><a href="#">Home</a></li>-->
               <!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Page 1-1</a></li>
@@ -32,9 +32,22 @@
                   <li><a href="#">Page 1-3</a></li>
                 </ul>
               </li>-->
-              <li><a href="#/contacts/city/edit">City Ops</a></li>
-              <li><a href="#/contacts/speciality/edit">Speciality Ops</a></li>
-              <li><a href="#/contacts/vendor/edit">Vendor Ops</a></li>
+              <li><a href="#/contacts/city/edit">City Operations</a></li>
+              <!--<li><a href="#/contacts/speciality/edit">Speciality Operations</a></li>-->
+
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Speciality Operations <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#/contacts/speciality/edit">Speciality</a></li>
+                  <li><a href="#/contacts/subspeciality/edit">SubSpeciality</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Vendor Operations <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#/contacts/vendor/edit">Vendor</a></li>
+                  <li><a href="#/contacts/vendor/address/edit">Vendor Address</a></li>
+                </ul>
+              </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -65,6 +78,7 @@
     <script src="js/controllers/notes_controller.js"></script>
     <script src="js/controllers/city_controller.js"></script>
     <script src="js/controllers/speciality_controller.js"></script>
+    <script src="js/controllers/sub_speciality_controller.js"></script>
     <script src="js/controllers/vendor_controller.js"></script>
     <script src="js/controllers/vendor_address_controller.js"></script>
     <script src="js/ng-img-crop.js"></script>
