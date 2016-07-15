@@ -30,6 +30,9 @@ myApp.config(['$routeProvider','$httpProvider', function ($routeProvider, $httpP
     }).when('/contacts/vendor/address/edit', {
         templateUrl : 'partials/vendor-address-operations.html',
         controller : 'vendorAddressController'
+    }).when('/contacts/vendor/subspeciality/edit', {
+        templateUrl : 'partials/vendor-subspeciality.html',
+        controller : 'vendorSubSpecialityController'
     }).otherwise({
         redirectTo : '/contacts/city/edit'
     });
