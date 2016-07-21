@@ -30,7 +30,7 @@ myApp.controller('vendorSubSpecialityController', ['$scope', '$http', '$location
     $scope.addUserSubSpeciality = function() {
         var data = { userIdSubSpecialityIdBean :
                         {"userId" : $scope.usersubspeciality.user_Id, "subSpecialityId" : $scope.usersubspeciality.subspeciality_Id},
-                    "price" : $scope.usersubspeciality.price};
+                    "price" : $scope.usersubspeciality.price, "startingFrom" : $scope.usersubspeciality.startingFrom};
         $scope.addUserSubSpecialityPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/onboard/usersubspeciality",CONSTANTS.POST_METHOD,data);
         $scope.addUserSubSpecialityPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');

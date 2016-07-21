@@ -33,7 +33,15 @@
                 <label class="col-md-2 control-label" for="nameInput">Price :</label>
                 <!--class "form-control" makes the width 100%-->
                 <div class="col-md-10">
-                    <input class="form-control" placeholder="rate" type="text" id="subspeciality.name" ng-model="usersubspeciality.price"/>
+                    <input class="form-control" placeholder="rate" type="text" id="usersubspeciality.price" ng-model="usersubspeciality.price"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="startingFrom">Starting From :</label>
+                <!--class "form-control" makes the width 100%-->
+                <div class="col-md-10">
+                    <input class="form-control" placeholder="start from year" type="text" id="usersubspeciality.startingFrom" ng-model="usersubspeciality.startingFrom"/>
                 </div>
             </div>
 
@@ -58,6 +66,7 @@
                          <th>UserId</th>
                          <th>SubSpeciality Id</th>
                          <th>Price</th>
+                         <th>Starting From</th>
                       </tr>
                    </thead>
                    <tbody>
@@ -65,6 +74,7 @@
                          <td>{{userSubSpeciality.userIdSubSpecialityIdBean.userId}}</td>
                          <td>{{userSubSpeciality.userIdSubSpecialityIdBean.subSpecialityId}}</td>
                          <td>{{userSubSpeciality.price}}</td>
+                         <td>{{userSubSpeciality.startingFrom}}</td>
                       </tr>
                    </tbody>
                 </table>
