@@ -5,5 +5,6 @@ myApp.service('CONSTANTS', function(){
 
     this.SUCCESS= 'SUCCESS';
     this.FAILURE= 'FAILURE';
+    this.APP_BASE_URL= 'http://localhost:9000';
 
 });

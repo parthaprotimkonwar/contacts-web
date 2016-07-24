@@ -15,7 +15,7 @@ myApp.controller('vendorSubSpecialityController', ['$scope', '$http', '$location
 
     //List all Users
     $scope.listUsers = function() {
-        $scope.listUsersPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/list/users",CONSTANTS.GET_METHOD,null);
+        $scope.listUsersPromise = commonServices.sendHttpRequest(CONSTANTS.APP_BASE_URL+"/admin/list/users",CONSTANTS.GET_METHOD,null);
         $scope.listUsersPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');
             console.log(data);
@@ -31,7 +31,7 @@ myApp.controller('vendorSubSpecialityController', ['$scope', '$http', '$location
         var data = { userIdSubSpecialityIdBean :
                         {"userId" : $scope.usersubspeciality.user_Id, "subSpecialityId" : $scope.usersubspeciality.subspeciality_Id},
                     "price" : $scope.usersubspeciality.price, "startingFrom" : $scope.usersubspeciality.startingFrom};
-        $scope.addUserSubSpecialityPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/onboard/usersubspeciality",CONSTANTS.POST_METHOD,data);
+        $scope.addUserSubSpecialityPromise = commonServices.sendHttpRequest(CONSTANTS.APP_BASE_URL+"/admin/onboard/usersubspeciality",CONSTANTS.POST_METHOD,data);
         $scope.addUserSubSpecialityPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');
             console.log(data);
@@ -47,7 +47,7 @@ myApp.controller('vendorSubSpecialityController', ['$scope', '$http', '$location
     }
 
     $scope.listUserSubSpecialities = function() {
-        $scope.listUserSubSpecialityPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/list/usersubspeciality",CONSTANTS.GET_METHOD,null);
+        $scope.listUserSubSpecialityPromise = commonServices.sendHttpRequest(CONSTANTS.APP_BASE_URL+"/admin/list/usersubspeciality",CONSTANTS.GET_METHOD,null);
         $scope.listUserSubSpecialityPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');
             console.log(data);

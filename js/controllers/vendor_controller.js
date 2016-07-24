@@ -24,7 +24,7 @@ myApp.controller('vendorController', ['$scope', '$http', '$location', 'commonSer
 
     //List all Cities
     $scope.listCities = function() {
-        $scope.listCitiesPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/list/cities",CONSTANTS.GET_METHOD,null);
+        $scope.listCitiesPromise = commonServices.sendHttpRequest(CONSTANTS.APP_BASE_URL+"/admin/list/cities",CONSTANTS.GET_METHOD,null);
         $scope.listCitiesPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');
             console.log(data);
@@ -39,7 +39,7 @@ myApp.controller('vendorController', ['$scope', '$http', '$location', 'commonSer
     //Add User
     $scope.addUser = function() {
         var data = {"cityId" : $scope.user.city_Id, "userType" : "VENDORS", "name" : $scope.user.name, "email" : $scope.user.email, "mobile" : $scope.user.mobile, "status" : "ACTIVE"};
-        $scope.addUserPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/onboard/user",CONSTANTS.POST_METHOD,data);
+        $scope.addUserPromise = commonServices.sendHttpRequest(CONSTANTS.APP_BASE_URL+"/admin/onboard/user",CONSTANTS.POST_METHOD,data);
         $scope.addUserPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');
             console.log(data);
@@ -57,7 +57,7 @@ myApp.controller('vendorController', ['$scope', '$http', '$location', 'commonSer
 
     //List all Users
     $scope.listUsers = function() {
-        $scope.listUsersPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/list/users",CONSTANTS.GET_METHOD,null);
+        $scope.listUsersPromise = commonServices.sendHttpRequest(CONSTANTS.APP_BASE_URL+"/admin/list/users",CONSTANTS.GET_METHOD,null);
         $scope.listUsersPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');
             console.log(data);

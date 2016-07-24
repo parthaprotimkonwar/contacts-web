@@ -21,7 +21,7 @@ myApp.controller('specialityController', ['$scope', '$http', 'commonServices','C
     /*----------------------------------------------------------------------------------------------------*/
     $scope.addSpeciality = function() {
         var data = {"speciality" : $scope.speciality.name, "status" : "ACTIVE"};
-        $scope.addSpecialityPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/onboard/speciality",CONSTANTS.POST_METHOD,data);
+        $scope.addSpecialityPromise = commonServices.sendHttpRequest(CONSTANTS.APP_BASE_URL+"/admin/onboard/speciality",CONSTANTS.POST_METHOD,data);
         $scope.addSpecialityPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');
             console.log(data);
@@ -37,7 +37,7 @@ myApp.controller('specialityController', ['$scope', '$http', 'commonServices','C
     }
 
     $scope.listSpecialities = function() {
-        $scope.addSpecialityPromise = commonServices.sendHttpRequest("http://localhost:9000/admin/list/specialities",CONSTANTS.GET_METHOD,null);
+        $scope.addSpecialityPromise = commonServices.sendHttpRequest(CONSTANTS.APP_BASE_URL+"/admin/list/specialities",CONSTANTS.GET_METHOD,null);
         $scope.addSpecialityPromise.success(function (data, status, headers, config) {
             console.log('Got back a response');
             console.log(data);
